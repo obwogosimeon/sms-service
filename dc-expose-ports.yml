@@ -1,0 +1,9 @@
+version: '3.6'
+
+services:
+  sms_nginx:
+    ports:
+      - "8121:80"
+  farmer_db:
+    ports:
+      - "8919:5432"

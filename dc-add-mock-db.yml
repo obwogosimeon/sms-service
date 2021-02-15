@@ -1,0 +1,28 @@
+version: '3.6'
+
+networks:
+  farmer_db: {}
+
+volumes:
+  farmer_db_postgres_data: {}
+    
+services:
+  farmer_db:
+    build: ./db/farmer_db
+    restart: always
+    environment:
+      - POSTGRES_DB=farmer_db
+      - POSTGRES_USER=farmer_db
+      - POSTGRES_PASSWORD=farmer_db
+    expose:
+      - "5432"
+    volumes:
+      - farmer_db_postgres_data:/var/lib/postgresql/data
+    networks:
+      - farmer_db
+
+  sms_flask:
+    networks:
+      - farmer_db
+    depends_on:
+    - farmer_db

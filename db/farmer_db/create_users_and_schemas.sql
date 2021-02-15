@@ -1,0 +1,47 @@
+
+--- EXTENSIONS ---
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+--- USERS ---
+
+CREATE USER customer_app;
+ALTER USER customer_app WITH ENCRYPTED PASSWORD 'customer_app';
+
+CREATE USER registry;
+ALTER USER registry WITH ENCRYPTED PASSWORD 'registry';
+
+CREATE USER sms;
+ALTER USER sms WITH ENCRYPTED PASSWORD 'sms';
+
+CREATE USER ussd;
+ALTER USER ussd WITH ENCRYPTED PASSWORD 'ussd';
+
+CREATE USER oms;
+ALTER USER oms WITH ENCRYPTED PASSWORD 'oms';
+
+CREATE USER surveys;
+ALTER USER surveys WITH ENCRYPTED PASSWORD 'surveys';
+
+--- SCHEMAS ---
+
+CREATE SCHEMA customer_app;
+ALTER SCHEMA customer_app OWNER TO customer_app;
+
+CREATE SCHEMA registry;
+ALTER SCHEMA registry OWNER TO registry;
+
+CREATE SCHEMA administrative;
+ALTER SCHEMA administrative OWNER TO registry;
+
+CREATE SCHEMA sms;
+ALTER SCHEMA sms OWNER TO sms;
+
+CREATE SCHEMA ussd;
+ALTER SCHEMA ussd OWNER TO ussd;
+
+CREATE SCHEMA oms;
+ALTER SCHEMA oms OWNER TO oms;
+
+CREATE SCHEMA surveys;
+ALTER SCHEMA surveys OWNER TO surveys;
